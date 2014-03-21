@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @player.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @player.lastname %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @player.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @player.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @player.password_digest %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @player.phone %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @player.avatar %>
+</p>
+
+<p>
+  <strong>Adminflag:</strong>
+  <%= @player.adminflag %>
+</p>
+
+<p>
+  <strong>Mgrflag:</strong>
+  <%= @player.mgrflag %>
+</p>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>
