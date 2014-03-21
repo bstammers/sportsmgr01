@@ -2,14 +2,19 @@
 
 FactoryGirl.define do
   factory :player do
-    firstname "MyString"
-    lastname "MyString"
-    username "MyString"
-    email "MyString"
-    password_digest "MyString"
-    phone "MyString"
-    avatar "MyString"
+    firstname "Fred"
+    lastname "Smith"
+    username "fsmith"
+    email "fsmith@test.com"
+    password "pass"
+    password_confirmation "pass"
+    phone "0455 555555"
+    avatar ""
     adminflag false
     mgrflag false
   end
+
+  factory :invalid_player, parent: :player do
+    firstname nil
+   end
 end

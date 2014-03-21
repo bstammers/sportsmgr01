@@ -30,6 +30,9 @@ describe PlayersController do
   # PlayersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:player1) {FactoryGirl.create(:player)}
+
+=begin
   describe "GET index" do
     it "assigns all players as @players" do
       player = Player.create! valid_attributes
@@ -37,27 +40,29 @@ describe PlayersController do
       assigns(:players).should eq([player])
     end
   end
+=end
 
   describe "GET show" do
     it "assigns the requested player as @player" do
-      player = Player.create! valid_attributes
-      get :show, {:id => player.to_param}, valid_session
-      assigns(:player).should eq(player)
+      #player = Player.create! valid_attributes
+      #player = FactoryGirl.create(:player)
+      get :show, id: player1
+      assigns(:player).should eq(player1)
     end
   end
 
   describe "GET new" do
     it "assigns a new player as @player" do
-      get :new, {}, valid_session
+      get :new
       assigns(:player).should be_a_new(Player)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested player as @player" do
-      player = Player.create! valid_attributes
-      get :edit, {:id => player.to_param}, valid_session
-      assigns(:player).should eq(player)
+      #player = FactoryGirl.build(:player)
+      get :edit, id: player1
+      assigns(:player).should eq(player1)
     end
   end
 
@@ -65,96 +70,96 @@ describe PlayersController do
     describe "with valid params" do
       it "creates a new Player" do
         expect {
-          post :create, {:player => valid_attributes}, valid_session
+          post :create, player: FactoryGirl.attributes_for(:player)
         }.to change(Player, :count).by(1)
       end
 
       it "assigns a newly created player as @player" do
-        post :create, {:player => valid_attributes}, valid_session
+        post :create, player: FactoryGirl.attributes_for(:player)
         assigns(:player).should be_a(Player)
         assigns(:player).should be_persisted
       end
 
       it "redirects to the created player" do
-        post :create, {:player => valid_attributes}, valid_session
+        post :create, player: FactoryGirl.attributes_for(:player)
         response.should redirect_to(Player.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved player as @player" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
-        post :create, {:player => { "firstname" => "invalid value" }}, valid_session
-        assigns(:player).should be_a_new(Player)
+      it "does not save the new player" do
+        expect {
+          post :create, player: FactoryGirl.attributes_for(:invalid_player)
+        }.to_not change(Player, :count)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
-        post :create, {:player => { "firstname" => "invalid value" }}, valid_session
+        #Player.any_instance.stub(:save).and_return(false)
+        post :create, player: FactoryGirl.attributes_for(:invalid_player)
         response.should render_template("new")
       end
     end
   end
 
+
   describe "PUT update" do
     describe "with valid params" do
+      before :each do
+        @player = FactoryGirl.create(:player)
+      end
       it "updates the requested player" do
-        player = Player.create! valid_attributes
-        # Assuming there are no other players in the database, this
-        # specifies that the Player created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Player.any_instance.should_receive(:update).with({ "firstname" => "MyString" })
-        put :update, {:id => player.to_param, :player => { "firstname" => "MyString" }}, valid_session
+        put :update, id: @player, player: FactoryGirl.attributes_for(:player, firstname: "Tom", lastname: "Brown")
+        @player.reload
+        @player.firstname.should eq("Tom")
+        @player.lastname.should eq("Brown")
       end
 
       it "assigns the requested player as @player" do
-        player = Player.create! valid_attributes
-        put :update, {:id => player.to_param, :player => valid_attributes}, valid_session
-        assigns(:player).should eq(player)
+        #player = Player.create! valid_attributes
+        put :update, id: @player, player: FactoryGirl.attributes_for(:player)
+        assigns(:player).should eq(@player)
       end
 
       it "redirects to the player" do
-        player = Player.create! valid_attributes
-        put :update, {:id => player.to_param, :player => valid_attributes}, valid_session
-        response.should redirect_to(player)
+       put :update, id: @player, player: FactoryGirl.attributes_for(:player)
+        response.should redirect_to(@player)
       end
     end
 
+=begin
     describe "with invalid params" do
+      it "does not update the requested player" do
+        put :update, id: @player, player: FactoryGirl.attributes_for(:player, firstname: nil, lastname: "Brown")
+        @player.reload
+        @player.firstname.should_not eq("Tom")
+        @player.lastname.should eq("Smith")
+      end
       it "assigns the player as @player" do
-        player = Player.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
-        put :update, {:id => player.to_param, :player => { "firstname" => "invalid value" }}, valid_session
-        assigns(:player).should eq(player)
+        put :update, id: @player, player: FactoryGirl.attributes_for(:invalid_player)
+        assigns(:player).should eq(@player)
       end
 
       it "re-renders the 'edit' template" do
-        player = Player.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
-        put :update, {:id => player.to_param, :player => { "firstname" => "invalid value" }}, valid_session
+        put :update, id: @player, player: FactoryGirl.attributes_for(:invalid_player)
         response.should render_template("edit")
       end
     end
+=end
   end
 
   describe "DELETE destroy" do
     it "destroys the requested player" do
-      player = Player.create! valid_attributes
       expect {
-        delete :destroy, {:id => player.to_param}, valid_session
+        delete :destroy, id: player1
       }.to change(Player, :count).by(-1)
     end
 
     it "redirects to the players list" do
-      player = Player.create! valid_attributes
-      delete :destroy, {:id => player.to_param}, valid_session
+      delete :destroy, id: player1
       response.should redirect_to(players_url)
     end
   end
+
 
 end

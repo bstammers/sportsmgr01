@@ -10,6 +10,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    @player = Player.find(params[:id])
   end
 
   # GET /players/new
@@ -69,6 +70,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:firstname, :lastname, :username, :email, :password_digest, :phone, :avatar, :adminflag, :mgrflag)
+      params.require(:player).permit(:firstname, :lastname, :username, :email, :password, :password_confirmation, :phone, :avatar, :adminflag, :mgrflag)
     end
 end
