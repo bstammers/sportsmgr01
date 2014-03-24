@@ -1,7 +1,13 @@
 Sportsmgr::Application.routes.draw do
   resources :players
+  resources :sessions, only: [:new, :create, :destroy]
 
   root 'sessions#new'
+  match '/register', to: "players#new", via: 'get'
+  match '/signin', to: "sessions#new", via: 'get'
+  match '/signout', to: "sessions#destroy", via: 'delete'
+  
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

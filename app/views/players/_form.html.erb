@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :firstname %><br>
+    <%= f.label :firstname, "First Name"%><br>
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br>
+    <%= f.label :lastname, "Last Name" %><br>
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
@@ -44,14 +44,14 @@
     <%= f.text_field :avatar %>
   </div>
   <div class="field">
-    <%= f.label :adminflag %><br>
+    <%= f.label :adminflag, "Administrator" %><br>
     <%= f.check_box :adminflag %>
   </div>
   <div class="field">
-    <%= f.label :mgrflag %><br>
+    <%= f.label :mgrflag, "Team Manager" %><br>
     <%= f.check_box :mgrflag %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create account", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

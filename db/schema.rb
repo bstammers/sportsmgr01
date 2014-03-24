@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321022250) do
+ActiveRecord::Schema.define(version: 20140324014037) do
 
   create_table "players", force: true do |t|
     t.string   "firstname"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20140321022250) do
     t.boolean  "mgrflag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true
+  add_index "players", ["remember_token"], name: "index_players_on_remember_token"
   add_index "players", ["username"], name: "index_players_on_username", unique: true
 
 end
