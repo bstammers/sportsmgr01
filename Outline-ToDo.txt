@@ -95,9 +95,9 @@ TO DO
 4.	Define authentication process. -- DONE
    a) create Session objects  --DONE
    b) set up sign in page     --DONE
-   c) define tests for sign in success and failure  -- INT TESTS NOT REALLY WORKING...DO BROWSER TESTING INSTEAD
-5.	Set up player dashboard view, including player profile section
-   a) add link to player profile
+   c) define tests for sign in success and failure  -- INT TESTS NOT REALLY WORKING...DONE IN BROWSER
+5.	Set up player dashboard view, including player profile section  -- DONE
+   a) add link to player profile  --  DONE
 6.	Set up player profile display.
 7.	Create competition model
 8.	Define validations: unique competition name (incl season as part), unique divisions, mandatory name, divisions.

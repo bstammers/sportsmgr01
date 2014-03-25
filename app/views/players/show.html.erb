@@ -1,7 +1,45 @@
-<%= provide(:title, "Welcome " + @player.firstname) %>
+<% provide(:title, "Welcome" + @player.firstname) %>
 <p id="notice"><%= notice %></p>
 
-<p>
+<p>Welcome <%= @player.firstname %> !</p>
+<table width="100%">
+  <tr>
+    <td width="78%">
+      <table width="100%" style="border: 1px solid blue; border-collapse: collapse;">
+        <tr><td>Competitions</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+      </table>
+    </td>
+    <td width="4%"></td>
+    <td width="18%">
+      <table width="100%" style="border: 1px solid green; border-collapse: collapse;">
+        <tr><td style="background-color: green; color: white;">Profile</td></tr>
+        <tr><td style="background-color: #a7edb9; color: black;"><%= @player.firstname %> <%= @player.lastname %></td></tr>
+        <tr><td style="background-color: #a7edb9; color: black;"><%= @player.username %></td></tr>
+        <tr><td style="background-color: #a7edb9; color: black;"><%= @player.phone %></td></tr>
+        <tr><td style="background-color: #a7edb9; color: black;"><%= @player.email %></td></tr>
+        <tr><td><%= link_to 'Edit', edit_player_path(@player) %></td></tr>
+      </table>
+    </td> 
+  </tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
+  <tr>
+    <td colspan=3>
+      <table width="100%" style="border: 1px solid yellow; border-collapse: collapse;">
+        <tr><td>Messages</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+      <table>
+    </td>
+  </tr>
+</table>
+<!-- <p>
   <strong>Firstname:</strong>
   <%= @player.firstname %>
 </p>
@@ -45,6 +83,6 @@
   <strong>Mgrflag:</strong>
   <%= @player.mgrflag %>
 </p>
-
+ -->
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>
