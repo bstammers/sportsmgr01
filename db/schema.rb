@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324014037) do
+ActiveRecord::Schema.define(version: 20140326043013) do
+
+  create_table "competitions", force: true do |t|
+    t.string   "name"
+    t.boolean  "pointsflag"
+    t.boolean  "setsflag"
+    t.boolean  "mvpflag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "competitions", ["name"], name: "index_competitions_on_name", unique: true
 
   create_table "players", force: true do |t|
     t.string   "firstname"

@@ -98,7 +98,7 @@ TO DO
    c) define tests for sign in success and failure  -- INT TESTS NOT REALLY WORKING...DONE IN BROWSER
 5.	Set up player dashboard view, including player profile section  -- DONE
    a) add link to player profile  --  DONE
-6.	Set up player profile display.
+6.	Set up player profile display. -- BASIC DASHBOARD LAYOUT
 7.	Create competition model
 8.	Define validations: unique competition name (incl season as part), unique divisions, mandatory name, divisions.
 9.	Create team model

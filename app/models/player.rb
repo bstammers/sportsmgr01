@@ -10,6 +10,12 @@ class Player < ActiveRecord::Base
 	def Player.hash(token)
 		Digest::SHA1.hexdigest(token.to_s)
 	end
+	def isadmin?
+		self.adminflag?
+	end
+	def ismanager?
+		self.mgrflag?
+	end
 
 	private
 		def create_remember_token

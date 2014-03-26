@@ -10,7 +10,7 @@ FactoryGirl.define do
     password_confirmation "pass"
     phone "0455 555555"
     avatar ""
-    adminflag false
+    adminflag true
     mgrflag false
   end
 
