@@ -99,7 +99,9 @@ TO DO
 5.	Set up player dashboard view, including player profile section  -- DONE
    a) add link to player profile  --  DONE
 6.	Set up player profile display. -- BASIC DASHBOARD LAYOUT
-7.	Create competition model
+7.	Create competition model -- DONE
+	a) Set up model tests  --  DONE
+	b) Set up controller tests  -- DONE
 8.	Define validations: unique competition name (incl season as part), unique divisions, mandatory name, divisions.
 9.	Create team model
 10.	Define validations: unique team name, mandatory team name, competition, division.
