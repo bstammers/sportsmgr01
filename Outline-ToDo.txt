@@ -102,6 +102,10 @@ TO DO
 7.	Create competition model -- DONE
 	a) Set up model tests  --  DONE
 	b) Set up controller tests  -- DONE
+8.	Create division model  --  DONE
+	a) Set up model tests  -- DONE
+	b) Set up controller tests
+	c) set up associations with competition  -- DONE
 8.	Define validations: unique competition name (incl season as part), unique divisions, mandatory name, divisions.
 9.	Create team model
 10.	Define validations: unique team name, mandatory team name, competition, division.

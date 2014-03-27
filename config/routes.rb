@@ -1,4 +1,6 @@
 Sportsmgr::Application.routes.draw do
+  resources :divisions
+
   resources :competitions
   resources :players
   resources :sessions, only: [:new, :create, :destroy]
