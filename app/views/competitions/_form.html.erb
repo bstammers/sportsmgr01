@@ -12,19 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Competition Name" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :pointsflag %><br>
+    <%= f.label "Divisions" %>  <%= link_to 'Add division', new_division_path %>
+    <% if @competition.divisions.any? %>
+      <%= render @divisions %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :pointsflag, "Display points difference?" %><br>
     <%= f.check_box :pointsflag %>
   </div>
   <div class="field">
-    <%= f.label :setsflag %><br>
+    <%= f.label :setsflag, "Display sets percentages?" %><br>
     <%= f.check_box :setsflag %>
   </div>
   <div class="field">
-    <%= f.label :mvpflag %><br>
+    <%= f.label :mvpflag, "Record match MVP?" %><br>
     <%= f.check_box :mvpflag %>
   </div>
   <div class="actions">

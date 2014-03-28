@@ -24,6 +24,8 @@ class DivisionsController < ApplicationController
   # POST /divisions
   # POST /divisions.json
   def create
+    #@comp = Competition.find(params[:competition_id])
+    #@division = @comp.Division.new(division_params)
     @division = Division.new(division_params)
 
     respond_to do |format|
@@ -69,6 +71,6 @@ class DivisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def division_params
-      params.require(:division).permit(:divname)
+      params.require(:division).permit(:divname, :competition_id, team_ids: [])
     end
 end

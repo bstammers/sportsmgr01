@@ -106,7 +106,26 @@ TO DO
 	a) Set up model tests  -- DONE
 	b) Set up controller tests
 	c) set up associations with competition  -- DONE
-8.	Define validations: unique competition name (incl season as part), unique divisions, mandatory name, divisions.
-9.	Create team model
-10.	Define validations: unique team name, mandatory team name, competition, division.
-11.	Build tests for integration of these 3 models and verify.
+9.	Create team model  -- DONE
+	a) Set up model tests  -- DONE
+	b) Set up controller tests  -- DONE
+	c) Set up associations with division and competition  -- DONE
+
+10.	Set up display/edit forms
+	a) competition form
+	b) division form
+	c) team form
+	d) work out how to select created competitions in combo box in division to assign
+	e) work out how to select created divisions from combo box in team to assign
+	f) work out how to select created teams from combo box in player to assign
+	
+11.	Set up Admin page
+	a) link to login page (if admin flag open page)  -- DONE
+	b) add competition list
+	c) link to add new competition
+	d) in competition, link to add new divisions
+	e) clicking on competition from list will drill down and display divisions with list of teams - link to create new team
+	f) clicking on team in division list will open team details and list stats & players
+	g) show list of unaffiliated players - have ability to link them to team
+	h) show message window - ability to broadcast to all team in comp/division, specific team, team managers only
+

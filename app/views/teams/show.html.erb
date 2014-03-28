@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Teamname:</strong>
+  <%= @team.teamname %>
+</p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @team.competition_id %>
+</p>
+
+<p>
+  <strong>Division:</strong>
+  <%= @team.division_id %>
+</p>
+
+<p>
+  <strong>Teammgr:</strong>
+  <%= @team.teammgr %>
+</p>
+
+<p>
+  <strong>Played:</strong>
+  <%= @team.played %>
+</p>
+
+<p>
+  <strong>Won:</strong>
+  <%= @team.won %>
+</p>
+
+<p>
+  <strong>Lost:</strong>
+  <%= @team.lost %>
+</p>
+
+<p>
+  <strong>Tied:</strong>
+  <%= @team.tied %>
+</p>
+
+<p>
+  <strong>Sets won:</strong>
+  <%= @team.sets_won %>
+</p>
+
+<p>
+  <strong>Sets lost:</strong>
+  <%= @team.sets_lost %>
+</p>
+
+<p>
+  <strong>Points for:</strong>
+  <%= @team.points_for %>
+</p>
+
+<p>
+  <strong>Points against:</strong>
+  <%= @team.points_against %>
+</p>
+
+<p>
+  <strong>Sets percent:</strong>
+  <%= @team.sets_percent %>
+</p>
+
+<p>
+  <strong>Points percent:</strong>
+  <%= @team.points_percent %>
+</p>
+
+<p>
+  <strong>Comp points:</strong>
+  <%= @team.comp_points %>
+</p>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

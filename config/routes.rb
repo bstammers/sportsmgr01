@@ -1,4 +1,6 @@
 Sportsmgr::Application.routes.draw do
+  resources :teams
+
   resources :divisions
 
   resources :competitions
@@ -9,8 +11,8 @@ Sportsmgr::Application.routes.draw do
   match '/register', to: "players#new", via: 'get'
   match '/signin', to: "sessions#new", via: 'get'
   match '/signout', to: "sessions#destroy", via: 'delete'
+  match "/admin", to: "sessions#admin", via: 'get'
   
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

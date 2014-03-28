@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327063540) do
+ActiveRecord::Schema.define(version: 20140328001609) do
 
   create_table "competitions", force: true do |t|
     t.string   "name"
@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 20140327063540) do
     t.boolean  "mvpflag"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "division_id"
   end
 
-  add_index "competitions", ["division_id"], name: "index_competitions_on_division_id"
   add_index "competitions", ["name"], name: "index_competitions_on_name", unique: true
 
   create_table "divisions", force: true do |t|
@@ -54,5 +52,28 @@ ActiveRecord::Schema.define(version: 20140327063540) do
   add_index "players", ["email"], name: "index_players_on_email", unique: true
   add_index "players", ["remember_token"], name: "index_players_on_remember_token"
   add_index "players", ["username"], name: "index_players_on_username", unique: true
+
+  create_table "teams", force: true do |t|
+    t.string   "teamname"
+    t.integer  "competition_id"
+    t.integer  "division_id"
+    t.string   "teammgr"
+    t.integer  "played"
+    t.integer  "won"
+    t.integer  "lost"
+    t.integer  "tied"
+    t.integer  "sets_won"
+    t.integer  "sets_lost"
+    t.integer  "points_for"
+    t.integer  "points_against"
+    t.decimal  "sets_percent"
+    t.decimal  "points_percent"
+    t.decimal  "comp_points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teams", ["competition_id"], name: "index_teams_on_competition_id"
+  add_index "teams", ["division_id"], name: "index_teams_on_division_id"
 
 end

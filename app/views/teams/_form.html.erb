@@ -1,0 +1,77 @@
+<%= form_for(@team) do |f| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :teamname %><br>
+    <%= f.text_field :teamname %>
+  </div>
+  <div class="field">
+    <%= f.label :competition_id %><br>
+    <%= f.number_field :competition_id %>
+  </div>
+  <div class="field">
+    <%= f.label :division_id %><br>
+    <%= f.number_field :division_id %>
+  </div>
+  <div class="field">
+    <%= f.label :teammgr %><br>
+    <%= f.text_field :teammgr %>
+  </div>
+  <div class="field">
+    <%= f.label :played %><br>
+    <%= f.number_field :played %>
+  </div>
+  <div class="field">
+    <%= f.label :won %><br>
+    <%= f.number_field :won %>
+  </div>
+  <div class="field">
+    <%= f.label :lost %><br>
+    <%= f.number_field :lost %>
+  </div>
+  <div class="field">
+    <%= f.label :tied %><br>
+    <%= f.number_field :tied %>
+  </div>
+  <div class="field">
+    <%= f.label :sets_won %><br>
+    <%= f.number_field :sets_won %>
+  </div>
+  <div class="field">
+    <%= f.label :sets_lost %><br>
+    <%= f.number_field :sets_lost %>
+  </div>
+  <div class="field">
+    <%= f.label :points_for %><br>
+    <%= f.number_field :points_for %>
+  </div>
+  <div class="field">
+    <%= f.label :points_against %><br>
+    <%= f.number_field :points_against %>
+  </div>
+  <div class="field">
+    <%= f.label :sets_percent %><br>
+    <%= f.text_field :sets_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :points_percent %><br>
+    <%= f.text_field :points_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :comp_points %><br>
+    <%= f.text_field :comp_points %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

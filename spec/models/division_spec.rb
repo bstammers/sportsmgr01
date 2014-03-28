@@ -7,4 +7,5 @@ describe Division do
   it {should validate_uniqueness_of(:divname)}
   #ASSOCIATIONS
   it {should belong_to(:competition)}
+  it {should have_many(:teams)}
 end

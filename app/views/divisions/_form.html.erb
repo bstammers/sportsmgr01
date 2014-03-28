@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :divname %><br>
+    <%= f.label :divname, "Division" %><br>
     <%= f.text_field :divname %>
+  </div>
+  <div class="field">
+    <%= f.label :competition_id %><br>
+    <%= f.text_field :competition_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -29,35 +29,36 @@ describe DivisionsController do
   # in order to pass any filters (e.g. authentication) defined in
   # DivisionsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+  let(:div1) {FactoryGirl.create(:division)}
 
   describe "GET index" do
     it "assigns all divisions as @divisions" do
-      division = Division.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:divisions).should eq([division])
+      #division = Division.create! valid_attributes
+      get :index
+      assigns(:divisions).should eq([div1])
     end
   end
 
   describe "GET show" do
     it "assigns the requested division as @division" do
-      division = Division.create! valid_attributes
-      get :show, {:id => division.to_param}, valid_session
-      assigns(:division).should eq(division)
+      #division = Division.create! valid_attributes
+      get :show, id: div1
+      assigns(:division).should eq(div1)
     end
   end
 
   describe "GET new" do
     it "assigns a new division as @division" do
-      get :new, {}, valid_session
+      get :new
       assigns(:division).should be_a_new(Division)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested division as @division" do
-      division = Division.create! valid_attributes
-      get :edit, {:id => division.to_param}, valid_session
-      assigns(:division).should eq(division)
+      #division = Division.create! valid_attributes
+      get :edit, id: div1
+      assigns(:division).should eq(div1)
     end
   end
 
@@ -65,18 +66,18 @@ describe DivisionsController do
     describe "with valid params" do
       it "creates a new Division" do
         expect {
-          post :create, {:division => valid_attributes}, valid_session
+          post :create, division: FactoryGirl.attributes_for(:division)
         }.to change(Division, :count).by(1)
       end
 
       it "assigns a newly created division as @division" do
-        post :create, {:division => valid_attributes}, valid_session
+        post :create, division: FactoryGirl.attributes_for(:division)
         assigns(:division).should be_a(Division)
         assigns(:division).should be_persisted
       end
 
       it "redirects to the created division" do
-        post :create, {:division => valid_attributes}, valid_session
+        post :create, division: FactoryGirl.attributes_for(:division)
         response.should redirect_to(Division.last)
       end
     end
@@ -100,43 +101,49 @@ describe DivisionsController do
 
   describe "PUT update" do
     describe "with valid params" do
+      before :each do
+        @div2 = FactoryGirl.create(:division)
+      end
       it "updates the requested division" do
-        division = Division.create! valid_attributes
+        #division = Division.create! valid_attributes
         # Assuming there are no other divisions in the database, this
         # specifies that the Division created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Division.any_instance.should_receive(:update).with({ "divname" => "MyString" })
-        put :update, {:id => division.to_param, :division => { "divname" => "MyString" }}, valid_session
+        put :update, id: @div2, division: FactoryGirl.attributes_for(:division, divname: "Second Div")
+        @div2.reload
+        @div2.divname.should eq("Second Div")
       end
 
       it "assigns the requested division as @division" do
-        division = Division.create! valid_attributes
-        put :update, {:id => division.to_param, :division => valid_attributes}, valid_session
-        assigns(:division).should eq(division)
+        #division = Division.create! valid_attributes
+        put :update, id: @div2, division: FactoryGirl.attributes_for(:division)
+        assigns(:division).should eq(@div2)
       end
 
       it "redirects to the division" do
-        division = Division.create! valid_attributes
-        put :update, {:id => division.to_param, :division => valid_attributes}, valid_session
-        response.should redirect_to(division)
+        #division = Division.create! valid_attributes
+        put :update, id: @div2, division: FactoryGirl.attributes_for(:division)
+        response.should redirect_to(@div2)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the division as @division" do
-        division = Division.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Division.any_instance.stub(:save).and_return(false)
-        put :update, {:id => division.to_param, :division => { "divname" => "invalid value" }}, valid_session
-        assigns(:division).should eq(division)
+      before :each do
+        @div = FactoryGirl.create(:division)
       end
+      it "assigns the division as @division" do
+        #division = Division.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        put :update, id: @div, division: FactoryGirl.attributes_for(:division)
+        assigns(:division).should eq(@div)
+   end
 
       it "re-renders the 'edit' template" do
-        division = Division.create! valid_attributes
+        #division = Division.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Division.any_instance.stub(:save).and_return(false)
-        put :update, {:id => division.to_param, :division => { "divname" => "invalid value" }}, valid_session
+        #Division.any_instance.stub(:save).and_return(false)
+        put :update, id: @div, division: FactoryGirl.attributes_for(:invalid_division)
         response.should render_template("edit")
       end
     end
@@ -144,15 +151,15 @@ describe DivisionsController do
 
   describe "DELETE destroy" do
     it "destroys the requested division" do
-      division = Division.create! valid_attributes
+      #division = Division.create! valid_attributes
       expect {
-        delete :destroy, {:id => division.to_param}, valid_session
+        delete :destroy, id: div1
       }.to change(Division, :count).by(-1)
     end
 
     it "redirects to the divisions list" do
-      division = Division.create! valid_attributes
-      delete :destroy, {:id => division.to_param}, valid_session
+      #division = Division.create! valid_attributes
+      delete :destroy, id: div1
       response.should redirect_to(divisions_url)
     end
   end

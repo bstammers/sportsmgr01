@@ -10,6 +10,6 @@ describe Competition do
 	it {should validate_uniqueness_of(:name)}
 	#ASSOCIATIONS
 	it {should have_many(:divisions)}
-	it {should have_many(:teams)}
+	it {should have_many(:teams).through(:divisions)}
 	it {should have_many(:players).through(:teams)}
 end
